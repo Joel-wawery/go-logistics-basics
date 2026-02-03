@@ -5,17 +5,25 @@ import "fmt"
 
 
 func main() {
-	//code to prepare the list of the number of books we have
-	booksAvailable := make([]int ,0 , 9)
-	
-	//code to append the delivery times that have already been made
-	booksAvailable = append(booksAvailable, 5 , 13 , 16 , 17 , 19 , 145 ,13545)
-	//code to print out the deliveries made so far
-	fmt.Println("All deliveries made:", booksAvailable)
-	
-	//code to slice the list to show the first 2 deliveries made
-	booksAvailed := booksAvailable[:5]
-	
-	//code to print out the first two deliveries made
-	fmt.Println("all the main books availed:", booksAvailed)
+	//code to create a new map for a fleet of trucks i have for my system
+	//the key is the ID of the truck and the value is the current status of the truck
+	truckFleet := map[string]string{
+		"Truck1": "Available",
+		"Truck2": "In Transit",
+		"Truck3": "Under Maintenance",
+	}	
+	//code to add a fleet to the map
+	truckFleet["Truck4"] = "Available"
+	truckFleet["Truck5"] = "In Transit"
+	//code to update the status of the map
+	truckFleet["Truck2"] = "has finished delivery of the product available"
+	//code to delete a particular truck since its not in operation
+	delete(truckFleet, "Truck3")
+	//print the final map
+	fmt.Println(truckFleet)
+
+	//code to lopp throough the map and print the staus of each truck and inspect through range
+	for TruckId , status := range truckFleet {
+		fmt.Printf("Truck ID: %s, Status: %s\n",TruckId , status)
+	}
 }
